@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head lang="en" runat="server">
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<title>Admin - Shikshya Guru</title>
+
+	<link href="../img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144"/>
+	<link href="../img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114"/>
+	<link href="../img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72"/>
+	<link href="../img/favicon.57x57.png" rel="apple-touch-icon" type="image/png"/>
+	<link href="../img/favicon.png" rel="icon" type="image/png"/>
+	<link href="../img/favicon.ico" rel="shortcut icon"/>
+
+	<link rel="stylesheet" href="../css/lib/lobipanel/lobipanel.min.css"/>
+	<link rel="stylesheet" href="../css/separate/vendor/lobipanel.min.css"/>
+	<link rel="stylesheet" href="../css/lib/jqueryui/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="../css/separate/pages/widgets.min.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../css/lib/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+
+    <link rel="stylesheet" href="../css/separate/pages/gallery.min.css"/>
+
+    <link rel="stylesheet" href="../css/separate/vendor/tags_editor.min.css"/>
+	<link rel="stylesheet" href="../css/separate/vendor/bootstrap-select/bootstrap-select.min.css"/>
+	<link rel="stylesheet" href="../css/separate/vendor/select2.min.css"/>
+
+    <link rel="stylesheet" href="../css/lib/bootstrap-sweetalert/sweetalert.css"/>
+    <link rel="stylesheet" href="../css/separate/vendor/sweet-alert-animations.min.css"/>
+
+    <!-- Ribbons and cards -->
+	<link rel="stylesheet" href="../css/separate/elements/cards.min.css">
+	<link rel="stylesheet" href="../css/separate/elements/ribbons.min.css">
+	<link rel="stylesheet" href="../css/separate/pages/ribbons.min.css">
+
+	<!-- Cropper -->
+    <link rel="stylesheet" href="../cropper/css/cropper.css">
+  	<link rel="stylesheet" href="../cropper/css/main.css">
+
+
+    <style type="text/css">
+
+    	.panel-heading .dropdown .dropdown-menu > li > a[data-func="editTitle"] {
+    		visibility: hidden !important;
+    	}
+
+    	.panel-heading .dropdown .dropdown-menu > li > a[data-func="close"] {
+    		visibility: hidden !important;
+    	}
+
+    	.acceptRequestBtn, .removeClientAuthorization {
+    		height: 30px !important;
+			padding-top: 4px !important;
+    	}
+
+    	.removeUserAuthorization {
+    		background: rgba(0,0,0,0.1);
+    		cursor: pointer;
+    	}
+
+    	.removeUserAuthorization:hover {
+    		background-color: #010101 !important;
+    	}
+
+    	.gallery-grid .gallery-col {
+    		width: 100px !Important;
+    		height: 100px !Important;
+    		margin-right: 15px;
+    		margin-top: -13px;
+    	}
+
+    	.gallery-item {
+    		border-radius: 100px !Important;
+    		width: 100px !Important;
+    		height: 100px !Important;
+    	}
+
+    	.gallery-item .gallery-picture {
+    		height: 100% !Important;
+    	}
+
+    	.gallery-item .gallery-hover-layout-in {
+    		background: rgba(50,50,50,.7);
+    		cursor: pointer;
+    	}
+
+    	.select2-selection__arrow {
+  			margin-top: 5px !important;
+  		}
+
+        #select2-mId-container {
+            color: darkgray !important;
+        }
+
+  		.modal-upload-bottom {
+  			margin-top: 70px !important;
+  			padding: 10px 0 0 0 !important;
+  		}
+
+        .customRoundedBtn {
+            height: 50px !important;
+            width: 50px !important;
+            margin: 0 30px 30px 0 !important;
+            position: fixed !important;
+            bottom: 0px !important;
+            right: 0px !important;
+            z-index: 100 !important;
+        }
+    </style>
+
+</head>
+
+<body class="with-side-menu-compact dark-theme dark-theme-blue">
+
+	<header class="site-header">
+	    <div class="container-fluid">
+	        <a href="super-admin.html" class="site-logo-text">S.|.G</a>
+	        <button class="hamburger hamburger--htla">
+	            <span>toggle menu</span>
+	        </button>
+	        <div class="site-header-content">
+	            <div class="site-header-content-in">
+	                <div class="site-header-shown">
+	                    <div class="dropdown dropdown-notification notif">
+	                        <a href="#"
+	                           class="header-alarm dropdown-toggle active"
+	                           id="dd-notification"
+	                           data-toggle="dropdown"
+	                           aria-haspopup="true"
+	                           aria-expanded="false">
+	                            <i class="font-icon-alarm"></i>
+	                        </a>
+	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-notif" aria-labelledby="dd-notification">
+	                            <div class="dropdown-menu-notif-header">
+	                                Notifications
+	                                <span class="label label-pill label-danger">4</span>
+	                            </div>
+	                            <div class="dropdown-menu-notif-list">
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-1.jpg" alt="">
+	                                    </div>
+	                                    <div class="dot"></div>
+	                                    <a href="#">Morgan</a> was bothering about something
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-2.jpg" alt="">
+	                                    </div>
+	                                    <div class="dot"></div>
+	                                    <a href="#">Lioneli</a> had commented on this <a href="#">Super Important Thing</a>
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-3.jpg" alt="">
+	                                    </div>
+	                                    <div class="dot"></div>
+	                                    <a href="#">Xavier</a> had commented on the <a href="#">Movie title</a>
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-4.jpg" alt="">
+	                                    </div>
+	                                    <a href="#">Lionely</a> wants to go to <a href="#">Cinema</a> with you to see <a href="#">This Movie</a>
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                            </div>
+	                            <div class="dropdown-menu-notif-more">
+	                                <a href="#">See more</a>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="dropdown user-menu">
+	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            <img src="../img/avatar-2-64.png" alt="">
+	                        </button>
+	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
+	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Profile</a>
+	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Settings</a>
+	                            <a class="dropdown-item" href="#" onclick="getClientRequest();"><span class="font-icon glyphicon glyphicon-question-sign"></span>Help</a>
+	                            <div class="dropdown-divider"></div>
+	                            <a class="dropdown-item" href="#" onclick="logout();"><span class="font-icon glyphicon glyphicon-log-out"></span>Logout</a>
+	                        </div>
+	                    </div>
+
+	                </div><!--.site-header-shown-->
+
+					<!-- <div class="mobile-menu-right-overlay">
+	                	<h3 style="color: #FFFFFF;">Pankaj koirala</h3>
+	                </div> -->
+
+	                <!-- User name -->
+	                <div class="mobile-menu-right-overlay"></div>
+	                <div class="site-header-collapsed">
+	                    <div class="site-header-collapsed-in">
+	                        <div class="dropdown dropdown-typical">
+	                            <a class="dropdown-toggle" id="userNameHolder">
+	                                <span id="userName"></span>
+	                            </a>
+	                        </div>
+	                    </div><!--.site-header-collapsed-in-->
+	                </div><!--.site-header-collapsed-->
+
+	            </div><!--site-header-content-in-->
+	        </div><!--.site-header-content-->
+	    </div><!--.container-fluid-->
+	</header><!--.site-header-->
+
+	<div class="mobile-menu-left-overlay"></div>
+	<nav class="side-menu side-menu-compact">
+
+	    <ul class="side-menu-list">
+	        <li class="brown opened" id="mainDiv">
+	            <a>
+	                <i class="font-icon font-icon-home"></i>
+	                <span class="lbl">Dashboard</span>
+	            </a>
+	        </li>
+	        <li class="blue" id="newsDiv">
+	            <a>
+	                <i class="font-icon font-icon-cart"></i>
+	                <span class="lbl">News</span>
+	            </a>
+	        </li>
+	    </ul>
+	</nav><!--.side-menu-->
+
+	<div class="page-content" id="pageContentMain">
+
+	    <div class="container-fluid">
+
+    		<div class="row">
+
+	    		<div class="col-xl-6">
+	    			<div class="box-typical box-typical-padding" style="background-color: #00a8ff; height: 145px;">
+						<div class="gallery-grid">
+
+							<div class="gallery-col" type="button" data-toggle="modal" data-target="#salesModal">
+								<article class="gallery-item">
+									<img class="gallery-picture" src="img/sales.png" alt="">
+									<div class="gallery-hover-layout">
+										<div class="gallery-hover-layout-in">
+											<p>SALE</p>
+										</div>
+									</div>
+								</article>
+							</div><!--.gallery-col-->
+
+							<div class="gallery-col">
+								<article class="gallery-item">
+									<img class="gallery-picture" src="img/order.png" alt="">
+									<div class="gallery-hover-layout">
+										<div class="gallery-hover-layout-in">
+											<p>ORDER</p>
+										</div>
+									</div>
+								</article>
+							</div><!--.gallery-col-->
+
+							<div class="gallery-col">
+								<article class="gallery-item">
+									<img class="gallery-picture" src="img/add.png" alt="">
+									<div class="gallery-hover-layout">
+										<div class="gallery-hover-layout-in">
+											<p>ADD ITEM</p>
+										</div>
+									</div>
+								</article>
+							</div><!--.gallery-col-->
+						</div>
+					</div>
+				</div>
+
+				<!-- // Total clients and users -->
+				<div class="col-xl-6">
+					<div class="row">
+	                    <div class="col-sm-6">
+	                        <article class="statistic-box red">
+	                            <div>
+	                                <div class="number" id="totalAdmin">
+	                                	<!-- Total number of admin will display here -->
+	                                </div>
+	                                <div class="caption"><div>Total Admin</div></div>
+	                            </div>
+	                        </article>
+	                    </div><!--.col-->
+	                    <div class="col-sm-6">
+	                        <article class="statistic-box purple">
+	                            <div>
+	                                <div class="number" id="totalClientRequest">
+	                                	<!-- Total number of client request will display here -->
+	                                </div>
+	                                <div class="caption"><div>Client request</div></div>
+	                                <div class="percent">
+	                                    <div class="arrow down"></div>
+	                                    <p>11%</p>
+	                                </div>
+	                            </div>
+	                        </article>
+	                    </div><!--.col-->
+	                </div>
+            	</div>
+        	</div>
+
+	        <div class="row">
+
+	            <div class="col-xl-6">
+
+	                <div class="chart-statistic-box">
+	                    <div class="chart-txt">
+	                        <div class="chart-txt-top">
+	                            <p><span class="unit">$</span><span class="number">1540</span></p>
+	                            <p class="caption">Week income</p>
+	                        </div>
+	                        <table class="tbl-data">
+	                            <tr>
+	                                <td class="price color-purple">120$</td>
+	                                <td>Orders</td>
+	                            </tr>
+	                            <tr>
+	                                <td class="price color-yellow">15$</td>
+	                                <td>Investments</td>
+	                            </tr>
+	                            <tr>
+	                                <td class="price color-lime">55$</td>
+	                                <td>Others</td>
+	                            </tr>
+	                        </table>
+	                    </div>
+	                    <div class="chart-container">
+	                        <div class="chart-container-in">
+	                            <div id="chart_div"></div>
+	                            <header class="chart-container-title">Income</header>
+	                            <div class="chart-container-x">
+	                                <div class="item"></div>
+	                                <div class="item">tue</div>
+	                                <div class="item">wed</div>
+	                                <div class="item">thu</div>
+	                                <div class="item">fri</div>
+	                                <div class="item">sat</div>
+	                                <div class="item">sun</div>
+	                                <div class="item">mon</div>
+	                                <div class="item"></div>
+	                            </div>
+	                            <div class="chart-container-y">
+	                                <div class="item">300</div>
+	                                <div class="item"></div>
+	                                <div class="item">250</div>
+	                                <div class="item"></div>
+	                                <div class="item">200</div>
+	                                <div class="item"></div>
+	                                <div class="item">150</div>
+	                                <div class="item"></div>
+	                                <div class="item">100</div>
+	                                <div class="item"></div>
+	                                <div class="item">50</div>
+	                                <div class="item"></div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div><!--.chart-statistic-box-->
+
+	            </div><!--.col-->
+
+	            <div class="col-xl-6">
+	                <div class="row">
+	                    <div class="col-sm-6">
+	                        <article class="statistic-box red">
+	                            <div>
+	                                <div class="number" id="totalClients">
+	                                	<!-- Total number of client will display here -->
+	                            	</div>
+	                                <div class="caption"><div>Total Clients</div></div>
+	                                <div class="percent">
+	                                    <div class="arrow up"></div>
+	                                    <p>15%</p>
+	                                </div>
+	                            </div>
+	                        </article>
+	                    </div><!--.col-->
+	                    <div class="col-sm-6">
+	                        <article class="statistic-box purple">
+	                            <div>
+	                                <div class="number" id="totalUsers">
+	                                	<!-- Total number of users will display here -->
+	                                </div>
+	                                <div class="caption"><div>Total Users</div></div>
+	                                <div class="percent">
+	                                    <div class="arrow down"></div>
+	                                    <p>11%</p>
+	                                </div>
+	                            </div>
+	                        </article>
+	                    </div><!--.col-->
+	                    <div class="col-sm-6">
+	                        <article class="statistic-box yellow">
+	                            <div>
+	                                <div class="number" id="totalReportedClients">
+	                                	<!-- Total number of reported clients will display here -->
+	                                </div>
+	                                <div class="caption"><div>Reported Clients</div></div>
+	                                <div class="percent">
+	                                    <div class="arrow down"></div>
+	                                    <p>5%</p>
+	                                </div>
+	                            </div>
+	                        </article>
+	                    </div><!--.col-->
+	                    <div class="col-sm-6">
+	                        <article class="statistic-box green">
+	                            <div>
+	                                <div class="number" id="totalNewsPosted">
+	                                	<!-- Total number of news posted will display here -->
+	                                </div>
+	                                <div class="caption"><div>Total news posted</div></div>
+	                                <div class="percent">
+	                                    <div class="arrow up"></div>
+	                                    <p>84%</p>
+	                                </div>
+	                            </div>
+	                        </article>
+	                    </div><!--.col-->
+	                </div><!--.row-->
+	            </div><!--.col-->
+	        </div><!--.row-->
+
+	        <div class="row">
+
+	            <div class="col-xl-6 dahsboard-column">
+
+	            	<!-- Client request -->
+	                <section class="box-typical box-typical-dashboard panel panel-default scrollable">
+	                    <header class="box-typical-header panel-heading">
+	                        <h3 class="panel-title">Client request</h3>
+	                    </header>
+	                    <div class="box-typical-body panel-body">
+	                        <table class="tbl-typical table table-bordered table-hover"  id="table-edit" >
+	                        	<thead>
+		                            <tr>
+		                                <th><div>Name</div></th>
+		                                <th><div>Email</div></th>
+		                                <th align="center"><div>Phone</div></th>
+		                                <th align="center"><div>Action</div></th>
+		                            </tr>
+		                        </thead>
+		                        <tbody id="cliendRequestTable">
+
+		                        </tbody>
+	                        </table>
+	                    </div><!--.box-typical-body-->
+	                </section><!--.box-typical-dashboard-->
+	                <!-- Client request -->
+
+	                <!-- Users -->
+	                <section class="box-typical box-typical-dashboard panel panel-default scrollable">
+	                    <header class="box-typical-header panel-heading">
+	                        <h3 class="panel-title">Users</h3>
+	                    </header>
+	                    <div class="box-typical-body panel-body">
+	                        <div class="contact-row-list" id="allUsersDiv">
+
+	                        </div>
+	                    </div><!--.box-typical-body-->
+	                </section><!--.box-typical-dashboard-->
+	                <!-- Users -->
+
+	            </div><!--.col-->
+
+	            <div class="col-xl-6 dahsboard-column">
+
+	            	<!-- Clients -->
+	                <section class="box-typical box-typical-dashboard panel panel-default scrollable">
+	                    <header class="box-typical-header panel-heading">
+	                        <h3 class="panel-title">Clients </h3>
+	                    </header>
+	                    <div class="box-typical-body panel-body">
+	                        <table class="tbl-typical table table-bordered table-hover">
+	                        	<thead>
+		                            <tr>
+		                                <th><div>Name</div></th>
+		                                <th><div>Email</div></th>
+		                                <th align="center"><div>Phone</div></th>
+		                                <th><div>Address</div></th>
+		                                <th align="center"><div>Action</div></th>
+	                            	</tr>
+                            	</thead>
+	                            <tbody id="clientDetailsTable">
+
+		                        </tbody>
+	                        </table>
+	                    </div><!--.box-typical-body-->
+	                </section><!--.box-typical-dashboard-->
+	                <!-- Clients -->
+
+	                <!-- Reported clients -->
+	                <section class="box-typical box-typical-dashboard panel panel-default scrollable">
+	                    <header class="box-typical-header panel-heading">
+	                        <h3 class="panel-title">Reported clients </h3>
+	                    </header>
+	                    <div class="box-typical-body panel-body">
+	                        <table class="tbl-typical">
+	                            <tr>
+	                                <th><div>Name</div></th>
+	                                <th><div>Email</div></th>
+	                                <th align="center"><div>Phone</div></th>
+	                                <th align="center"><div>Date</div></th>
+	                            </tr>
+	                            <tr>
+	                                <td><span class="label label-primary">Islington college</span></td>
+	                                <td>islington@gmail.com</td>
+	                                <td align="center">9841525833</td>
+	                                <td class="color-blue-grey" nowrap align="center">23th May</td>
+	                            </tr>
+	                            <tr>
+	                                <td><span class="label label-primary">Islington college</span></td>
+	                                <td>islington@gmail.com</td>
+	                                <td align="center">9841525833</td>
+	                                <td class="color-blue-grey" nowrap align="center">23th May</td>
+	                            </tr>
+	                            <tr>
+	                                <td><span class="label label-primary">Islington college</span></td>
+	                                <td>islington@gmail.com</td>
+	                                <td align="center">9841525833</td>
+	                                <td class="color-blue-grey" nowrap align="center">23th May</td>
+	                            </tr>
+	                            <tr>
+	                                <td><span class="label label-primary">Islington college</span></td>
+	                                <td>islington@gmail.com</td>
+	                                <td align="center">9841525833</td>
+	                                <td class="color-blue-grey" nowrap align="center">23th May</td>
+	                            </tr>
+	                            <tr>
+	                                <td><span class="label label-primary">Islington college</span></td>
+	                                <td>islington@gmail.com</td>
+	                                <td align="center">9841525833</td>
+	                                <td class="color-blue-grey" nowrap align="center">23th May</td>
+	                            </tr>
+	                            <tr>
+	                                <td><span class="label label-primary">Islington college</span></td>
+	                                <td>islington@gmail.com</td>
+	                                <td align="center">9841525833</td>
+	                                <td class="color-blue-grey" nowrap align="center">23th May</td>
+	                            </tr>
+
+	                        </table>
+	                    </div><!--.box-typical-body-->
+	                </section><!--.box-typical-dashboard-->
+	                <!-- Reported Clients -->
+
+	            </div><!--.col-->
+
+	        </div>
+
+	    </div><!--.container-fluid-->
+
+	    <!-- modal -->
+	    <div class="modal fade" id="salesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #00a8ff; color: #fff">
+                        <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                            <i class="font-icon-close-2"></i>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Sale</h4>
+                    </div>
+                    <div class="modal-upload">
+                        <div class="modal-upload-cont">
+
+                            <section class="card" style="margin: 10px 20px 10px 20px;">
+							    <div class="card-block" style="margin:2px;">
+								    <form id="form-signup_v1" name="form-signup_v1" method="POST">
+
+									    <div class="row">
+										    <div class="col-md-6">
+			                                    <div class="form-group">
+			                                        <label class="form-label" for="itemCode">Item Code</label>
+			                                        <div class="form-control-wrapper">
+			                                            <input id="itemCode"
+			                                                class="form-control"
+			                                                name="[Item code]"
+			                                                placeholder="COP125"
+			                                                type="text"
+			                                                data-validation="[L>0]"
+													        data-validation-message="$ cannot be empty."/>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                                <div class="col-md-6">
+			                                    <div class="form-group">
+			                                        <label class="form-label" for="quantity">Quantity</label>
+			                                        <div class="form-control-wrapper">
+			                                            <input id="quantity"
+			                                                class="form-control"
+			                                                name="[Quantity]"
+			                                                placeholder="COP125"
+			                                                type="number"
+			                                                data-validation="[L>0]"
+													        data-validation-message="$ cannot be empty."/>
+			                                        </div>
+			                                    </div>
+			                                </div>
+									    </div>
+									    <div class="row">
+									    	<div class="col-md-12">
+                                                <label class="form-label" for="customerName">Customer</label>
+                                                <select class="select2-arrow" id="customerName">
+                                                    <option>Select name of the customer.</option>
+			                                        <asp:PlaceHolder ID="UserIdPlaceholder" runat="server"></asp:PlaceHolder>
+			                                        <option>Pankaj Koirala</option>
+			                                        <option>Sachin Singh</option>
+			                                        <option>Kalash Manandhar</option>
+			                                        <option>Arpan Kafle</option>
+                                                </select>
+                                                <br />
+                                                <br />
+                                            </div>
+									    </div>
+
+                                        <div class="row" style="margin-top:20px;">
+									        <div class="modal-upload-bottom form-group">
+				                                <button type="submit" class="btn btn-rounded" id="changeEmpDivBtn">Sale</button>
+				                            </div><!--.modal-upload-bottom-->
+                                        </div>
+								    </form>
+							    </div>
+						    </section>
+
+                        </div><!--.modal-upload-cont-->
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+
+        <div class="col-md-6 hidden">
+		    <select class="select2" multiple="multiple">
+			    <option data-icon="font-icon-home">Quant Verbal</option>
+			    <option selected data-icon="font-icon-cart">Real Gmat Test</option>
+			    <option data-icon="font-icon-speed">Prep test</option>
+			    <option data-icon="font-icon-users">Catprep test</option>
+			    <option data-icon="font-icon-comments">Third Party Test</option>
+		    </select>
+	    </div>
+
+        <div class="col-md-4 hidden">
+			<div class="card">
+				<div class="card-header">
+					Success message!
+				</div>
+				<div class="card-block">
+					<p class="card-text">
+						<button class="btn btn-primary swal-btn-success">Try Alert!</button>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div><!--.page-content-->
+
+	<div class="page-content" id="pageContentNews">
+
+	    <div class="container-fluid">
+
+
+	    	<!-- News heading banner -->
+	        <div class="ribbon-block round relative text-center with-bg">
+	            <div class="ribbon right-top">
+	                <button class="btn btn-rounded btn-inline btn-secondary-outline" type="button" data-toggle="modal" data-target="#createNewsModal">Create New</button>
+	            </div>
+	            <i class="block-icon fa fa-newspaper-o"></i>
+	            <span class="title">
+	                <h2>News</h2>
+	            </span>
+	    	</div>
+			<!-- News and events heading banner -->
+
+			<!-- Create news modal -->
+	    	<div class="modal fade" id="createNewsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		        <div class="modal-dialog" role="document">
+		            <div class="modal-content">
+		                <div class="modal-header" style="background-color: #00a8ff; color: #fff">
+		                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+		                        <i class="font-icon-close-2"></i>
+		                    </button>
+		                    <h4 class="modal-title" id="myModalLabel">Create News</h4>
+		                </div>
+		                <div class="modal-upload">
+		                    <div class="modal-upload-cont">
+
+	                            <section class="card" style="margin: 10px 20px 10px 20px;">
+									<div class="card-block" style="margin:2px;">
+
+										<form id="createNewsForm" name="createNewsForm" method="POST">
+
+											<div class="row">
+
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-label" for="fullName">Name</label>
+														<div class="form-control-wrapper">
+															<input id="fullName"
+																   class="form-control"
+																   name="Name"
+																   placeholder="Pankaj koirala"
+																   type="text"
+																   data-validation="[NOTEMPTY]"
+																   data-validation-message="$ cannot be empty.">
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="form-label" for="placeName">Place</label>
+														<div class="form-control-wrapper">
+															<input id="placeName"
+																   class="form-control"
+																   placeholder="Kathmandu"
+																   name="Place"
+																   type="text" data-validation="[NOTEMPTY]"
+																   data-validation-message="$ cannot be empty.">
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+											<div class="form-group">
+												<label class="form-label" for="newsHeading">Heading</label>
+												<div class="form-control-wrapper">
+													<input id="newsHeading"
+															placeholder="Tomarrow is a public holiday."
+														   class="form-control"
+														   name="News heading"
+														   type="text"
+														   data-validation="[NOTEMPTY]"
+														   data-validation-message="$ cannot be empty.">
+												</div>
+											</div>
+
+											<fieldset class="form-group">
+												<label class="form-label" for="newsContent">Content</label>
+												<div class="form-control-wrapper">
+													<textarea id="newsContent" rows="4" class="form-control" placeholder="Here goes messages...." data-autosize
+														name="News"
+													   type="text"
+													   data-validation="[NOTEMPTY]"
+													   data-validation-message="$ cannot be empty."></textarea>
+												</div>
+											</fieldset>
+
+				                            <div class="form-group">
+						                        <button class="btn btn-rounded btn-inline btn-secondary-outline"
+						                         	style="height: 50px; width: 50px; border: 2px solid; margin-top: 4px;"
+						                         	type="submit" data-toggle="modal" data-target="#cropperModal"> <i class="fa fa-upload"></i>
+						                     	</button>
+						                         <div class="img-preview preview-sm hidden croppedImage" style="margin-top: 10px;"></div>
+				                            </div>
+
+											 <div class="modal-upload-bottom form-group">
+						                        <button type="button" class="btn btn-rounded btn-default" id="cancleBtn">Cancel</button>
+						                        <button type="submit" class="btn btn-rounded">Done</button>
+						                    </div><!--.modal-upload-bottom-->
+
+										</form>
+
+									</div>
+								</section>
+
+		                    </div><!--.modal-upload-cont-->
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+			<!-- Create news modal -->
+
+			<!-- News card grid view -->
+			<div class="cards-grid" data-columns id="newsAndEventsDiv">
+
+				<!-- Dynamic content -->
+
+			</div>
+			<!-- News card grid view -->
+			<div class="clear"></div>
+
+
+			<!-- Cropper modal -->
+	    	<div class="modal fade bd-example-modal-lg" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		        <div class="modal-dialog modal-lg" role="document">
+		            <div class="modal-content" style="border: 0px; background-color: rgba(100,100,100 ,0.9);">
+		                <div class="modal-header" style="border-bottom: 0px; margin-bottom: 5px;">
+		                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close" style="margin-top: -10px;margin-right: -5px;">
+		                        <i class="font-icon-close-2"></i>
+		                    </button>
+		                </div>
+
+		                  <!-- Content -->
+						  <div class="container">
+						    <div class="row">
+						      <div class="col-md-9">
+						        <div class="img-container">
+						          <img id="image" src="../cropper/images/picture.jpg" alt="Picture">
+						        </div>
+						      </div>
+						      <div class="col-md-3">
+						        <div class="docs-preview clearfix">
+						          <div class="img-preview preview-lg"></div>
+						          <div class="img-preview preview-md"></div>
+						          <div class="img-preview preview-sm"></div>
+						          <div class="img-preview preview-xs"></div>
+						        </div>
+						      </div>
+						    </div>
+						    <div class="row">
+						      	<div class="col-md-9 docs-buttons">
+							        <div class="btn-group">
+							          	<label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+							            	<input type="file" class="sr-only" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+							            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="Import image with Blob URLs">
+							              		<span class="fa fa-upload"></span>
+							            	</span>
+							          	</label>
+							        </div>
+
+							        <div class="btn-group btn-group-crop">
+							          	<button type="button" class="btn btn-success cropperBtn" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+							            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { maxWidth: 4096, maxHeight: 4096 })">
+							              Crop Image
+							            	</span>
+							          	</button>
+							          	<button type="button" class="btn btn-success cropperBtn" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" style="margin: 0px 5px 0px 5px;">
+							            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 160, height: 90 })">
+							              	160&times;90
+							           	 	</span>
+							          	</button>
+							          	<button type="button" class="btn btn-success cropperBtn" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 320, &quot;height&quot;: 180 }">
+							            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 320, height: 180 })">
+							              	320&times;180
+							            	</span>
+							          	</button>
+							        </div>
+
+						        <!-- Show the cropped image in modal -->
+						        <div class="modal fade docs-cropped" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+						          	<div class="modal-dialog">
+						            	<div class="modal-content">
+						              		<div class="modal-header">
+						                		<h5 class="modal-title" id="getCroppedCanvasTitle">Cropped</h5>
+						                		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						                  			<span aria-hidden="true">&times;</span>
+						                		</button>
+						              		</div>
+						              		<div class="modal-body"></div>
+						              		<div class="modal-footer">
+						                		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						               	 		<a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.jpg">Download</a>
+						              		</div>
+						            	</div>
+						          	</div>
+						        </div><!-- /.modal -->
+
+						      </div><!-- /.docs-buttons -->
+
+						    </div>
+						  </div>
+
+		            </div>
+		        </div>
+		    </div>
+			<!-- Cropper modal -->
+
+
+	    </div><!--.container-fluid-->
+
+	</div><!--.page-content-->
+
+	<script src="../js/lib/jquery/jquery.min.js"></script>
+	<script src="../js/lib/tether/tether.min.js"></script>
+	<script src="../js/lib/bootstrap/bootstrap.min.js"></script>
+	<script src="../js/plugins.js"></script>
+
+	<script type="text/javascript" src="../js/lib/jqueryui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../js/lib/lobipanel/lobipanel.min.js"></script>
+	<script type="text/javascript" src="../js/lib/match-height/jquery.matchHeight.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<script src="../js/lib/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../js/lib/bootstrap-table/bootstrap-table-export.min.js"></script>
+    <script src="../js/lib/bootstrap-table/tableExport.min.js"></script>
+    <script src="../js/lib/bootstrap-table/bootstrap-table-init.js"></script>
+    <script src="../js/lib/table-edit/jquery.tabledit.min.js"></script>
+    <script src="../js/lib/peity/jquery.peity.min.js"></script>
+    <script src="../js/lib/html5-form-validation/jquery.validation.min.js"></script>
+    <script src="../js/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+
+
+    <script src="../js/lib/jquery-tag-editor/jquery.caret.min.js"></script>
+    <script src="../js/lib/jquery-tag-editor/jquery.tag-editor.min.js"></script>
+    <script src="../js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="../js/lib/select2/select2.full.min.js"></script>
+
+    <script src="../cropper/js/cropper.js"></script>
+  	<script src="../cropper/js/main.js"></script>
+  	<script src="../js/lib/salvattore/salvattore.min.js"></script>
+	<!-- Small hamburger menu ma problem dinxa tala ko le-->
+
+
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+	<script type="text/javascript" src="../database/super_admin.js"></script>
+
+
+	<script src="js/app.js"></script>
+</body>
+</html>

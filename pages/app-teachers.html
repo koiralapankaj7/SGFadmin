@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Teacher</title>
+
+	<link href="../img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
+	<link href="../img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
+	<link href="../img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
+	<link href="../img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
+	<link href="../img/favicon.png" rel="icon" type="image/png">
+	<link href="../img/favicon.ico" rel="shortcut icon">
+
+	<link rel="stylesheet" href="../css/lib/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/custom.css">
+
+	<!-- <link rel="stylesheet" href="../css/separate/elements/cards.min.css"> -->
+	<link rel="stylesheet" href="../css/separate/elements/ribbons.min.css">
+	<link rel="stylesheet" href="../css/separate/pages/ribbons.min.css">
+
+  <link rel="stylesheet" href="../css/separate/pages/gallery.min.css">
+  <link rel="stylesheet" href="../css/separate/pages/user.min.css">
+
+  <link rel="stylesheet" href="../cropper/css/cropper.css">
+	<link rel="stylesheet" href="../cropper/css/main.css">
+
+	<link rel="stylesheet" href="../css/lib/bootstrap-sweetalert/sweetalert.css"/>
+	<link rel="stylesheet" href="../css/separate/vendor/sweet-alert-animations.min.css"/>
+
+</head>
+
+<body class="with-side-menu dark-theme dark-theme-blue">
+
+	<header class="site-header">
+
+	    <div class="container-fluid">
+
+					<a href="institution=admin.html" class="site-logo-text" id="instName">
+							<span id="userName"></span>
+					</a>
+	        <!-- <a id="mainLogoBtn" class="site-logo" href="../index.html">
+	            <img class="hidden-md-down" src="../img/sg-logo-l.png" alt="">
+	            <img class="hidden-lg-up" src="../img/sg-logo-s.png" alt="">
+	        </a> -->
+
+	        <button class="hamburger hamburger--htla">
+	            <span>toggle menu</span>
+	        </button>
+
+	        <div class="site-header-content">
+
+	            <div class="site-header-content-in">
+
+									<!-- Right side header -->
+	                <div class="site-header-shown">
+
+											<!-- Notifications -->
+	                    <div class="dropdown dropdown-notification notif">
+	                        <a href="#"
+	                           class="header-alarm dropdown-toggle active"
+	                           id="dd-notification"
+	                           data-toggle="dropdown"
+	                           aria-haspopup="true"
+	                           aria-expanded="false">
+	                            <i class="font-icon-alarm"></i>
+	                        </a>
+	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-notif" aria-labelledby="dd-notification">
+	                            <div class="dropdown-menu-notif-header">
+	                                Notifications
+	                                <span class="label label-pill label-danger">4</span>
+	                            </div>
+	                            <div class="dropdown-menu-notif-list">
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-1.jpg" alt="">
+	                                    </div>
+	                                    <div class="dot"></div>
+	                                    <a href="#">Morgan</a> was bothering about something
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-2.jpg" alt="">
+	                                    </div>
+	                                    <div class="dot"></div>
+	                                    <a href="#">Lioneli</a> had commented on this <a href="#">Super Important Thing</a>
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-3.jpg" alt="">
+	                                    </div>
+	                                    <div class="dot"></div>
+	                                    <a href="#">Xavier</a> had commented on the <a href="#">Movie title</a>
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                                <div class="dropdown-menu-notif-item">
+	                                    <div class="photo">
+	                                        <img src="../img/photo-64-4.jpg" alt="">
+	                                    </div>
+	                                    <a href="#">Lionely</a> wants to go to <a href="#">Cinema</a> with you to see <a href="#">This Movie</a>
+	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
+	                                </div>
+	                            </div>
+	                            <div class="dropdown-menu-notif-more">
+	                                <a href="#">See more</a>
+	                            </div>
+	                        </div>
+	                    </div>
+
+											<!-- Notification message -->
+	                    <div class="dropdown dropdown-notification messages">
+	                        <a href="#"
+	                           class="header-alarm dropdown-toggle active"
+	                           id="dd-messages"
+	                           data-toggle="dropdown"
+	                           aria-haspopup="true"
+	                           aria-expanded="false">
+	                            <i class="font-icon-mail"></i>
+	                        </a>
+	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-messages" aria-labelledby="dd-messages">
+	                            <div class="dropdown-menu-messages-header">
+	                                <ul class="nav" role="tablist">
+	                                    <li class="nav-item">
+	                                        <a class="nav-link active"
+	                                           data-toggle="tab"
+	                                           href="#tab-incoming"
+	                                           role="tab">
+	                                            Inbox
+	                                            <span class="label label-pill label-danger">8</span>
+	                                        </a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link"
+	                                           data-toggle="tab"
+	                                           href="#tab-outgoing"
+	                                           role="tab">Outbox</a>
+	                                    </li>
+	                                </ul>
+	                                <!--<button type="button" class="create">
+	                                    <i class="font-icon font-icon-pen-square"></i>
+	                                </button>-->
+	                            </div>
+	                            <div class="tab-content">
+	                                <div class="tab-pane active" id="tab-incoming" role="tabpanel">
+	                                    <div class="dropdown-menu-messages-list">
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="mess-item-name">Tim Collins</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
+	                                        </a>
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/avatar-2-64.png" alt=""></span>
+	                                            <span class="mess-item-name">Christian Burton</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something! Morgan was bothering about something.</span>
+	                                        </a>
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="mess-item-name">Tim Collins</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
+	                                        </a>
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/avatar-2-64.png" alt=""></span>
+	                                            <span class="mess-item-name">Christian Burton</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something...</span>
+	                                        </a>
+	                                    </div>
+	                                </div>
+	                                <div class="tab-pane" id="tab-outgoing" role="tabpanel">
+	                                    <div class="dropdown-menu-messages-list">
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/avatar-2-64.png" alt=""></span>
+	                                            <span class="mess-item-name">Christian Burton</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something! Morgan was bothering about something...</span>
+	                                        </a>
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="mess-item-name">Tim Collins</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something! Morgan was bothering about something.</span>
+	                                        </a>
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/avatar-2-64.png" alt=""></span>
+	                                            <span class="mess-item-name">Christian Burtons</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
+	                                        </a>
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="../img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="mess-item-name">Tim Collins</span>
+	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
+	                                        </a>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="dropdown-menu-notif-more">
+	                                <a href="#">See more</a>
+	                            </div>
+	                        </div>
+	                    </div>
+
+											<!-- User controls -->
+	                    <div class="dropdown user-menu">
+	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            <img src="../img/avatar-2-64.png" alt="">
+	                        </button>
+	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
+	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Profile</a>
+	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Settings</a>
+	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-question-sign"></span>Help</a>
+	                            <div class="dropdown-divider"></div>
+	                            <a class="dropdown-item" href="#" onclick="logout();"><span class="font-icon glyphicon glyphicon-log-out"></span>Logout</a>
+	                        </div>
+	                    </div>
+
+											<!-- Right side menu -->
+	                    <button type="button" class="burger-right">
+	                        <i class="font-icon-menu-addl"></i>
+	                    </button>
+
+	                </div>
+									<!--.Right side header-->
+	                <div class="mobile-menu-right-overlay"></div>
+
+									<!-- User name displayer -->
+									<!-- <div class="site-header-collapsed">
+	                    <div class="site-header-collapsed-in">
+	                        <div class="dropdown dropdown-typical">
+	                            <a class="dropdown-toggle" id="userNameHolder">
+	                                <span id="userName"></span>
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div> -->
+
+	            </div><!--site-header-content-in-->
+	        </div><!--.site-header-content-->
+
+	    </div><!--.container-fluid-->
+
+	</header><!--.site-header-->
+
+	<div class="mobile-menu-left-overlay"></div>
+	<!-- Side nav bar -->
+	<nav class="side-menu">
+
+		<!-- Admin dashboard -->
+		<ul class="side-menu-list">
+
+	    	<!-- Dashboard -->
+	        <li class="grey sideNavbar" id="dashboardNavBtn">
+	        	<a href="institution-admin.html">
+		            <span>
+		                <i class="font-icon font-icon-dashboard"></i>
+		                <span class="lbl">Dashboard</span>
+		            </span>
+		        </a>
+	        </li>
+	    </ul>
+
+	    <!-- Application Section -->
+		<section>
+	        <header class="side-menu-title" style="color: darkgray">Application</header>
+		    <ul class="side-menu-list">
+
+		    	<!-- Home -->
+		        <li id="homeNavBtn">
+		            <a href="app-home.html">
+		                <i class="font-icon glyphicon glyphicon-home"></i>
+		                <span class="lbl">Home</span>
+		            </a>
+		        </li>
+
+		        <!-- Programmes -->
+		        <li id="programmesNavBtn">
+		            <a href="app-programmes.html">
+		                <i class="font-icon glyphicon glyphicon-education"></i>
+		                <span class="lbl">Programmes</span>
+		            </a>
+		        </li>
+
+		        <!-- Management -->
+		        <li id="managementNavBtn">
+		            <a href="app-management.html">
+		                <i class="font-icon glyphicon glyphicon-edit"></i>
+		                <span class="lbl">Management</span>
+		            </a>
+		        </li>
+
+		        <!-- Gallery -->
+		        <li id="galleryNavBtn">
+		            <a href="app-gallery.html">
+		                <i class="font-icon font-icon-picture-2"></i>
+		                <span class="lbl">Gallery</span>
+		            </a>
+		        </li>
+
+		        <!-- Teachers -->
+		        <li id="teachersNavBtn" class="opened">
+		            <a href="app-teachers.html">
+		                <i class="font-icon glyphicon glyphicon-certificate"></i>
+		                <span class="lbl">Teachers</span>
+		            </a>
+		        </li>
+
+		        <!-- Staffs -->
+		        <li id="staffNavBtn">
+		            <a href="app-staff.html">
+		                <i class="font-icon glyphicon glyphicon-star"></i>
+		                <span class="lbl">Staff's</span>
+		            </a>
+		        </li>
+
+		        <!-- Contacts -->
+		        <li id="contactsNavBtn">
+		            <a href="app-contact.html" class="label-right">
+		                <i class="font-icon font-icon-contacts"></i>
+		                <span class="lbl">Contact</span>
+		            </a>
+		        </li>
+
+		        <!-- Reviews -->
+		        <li id="reviewsNavBtn">
+		            <a href="app-reviews.html">
+		                <i class="font-icon glyphicon glyphicon-thumbs-up"></i>
+		                <span class="lbl">Reviews</span>
+		            </a>
+		        </li>
+
+		    </ul>
+		<!-- Application Section -->
+	</nav><!--.side-menu-->
+
+	<!--.page-content start-->
+	<div class="page-content">
+
+	 	<div class="container-fluid">
+
+			<!-- News and events heading banner -->
+		    <div class="ribbon-block round relative text-center with-bg" style="margin-bottom: 0px;">
+		        <div class="ribbon right-top">
+		            <button class="btn btn-rounded btn-inline btn-secondary-outline" type="button" data-toggle="modal" data-target="#addNewTeacherModal">Add New</button>
+		        </div>
+		        <i class="block-icon fa fa-group"></i>
+		        <span class="title">
+		            <h2>Teachers</h2>
+		        </span>
+			</div>
+			<!-- News and events heading banner -->
+
+			<!-- Create news and events modal -->
+		    <div class="modal fade" id="addNewTeacherModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		        <div class="modal-dialog" role="document">
+		            <div class="modal-content">
+		                <div class="modal-header" style="background-color: #00a8ff; color: #fff">
+		                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+		                        <i class="font-icon-close-2"></i>
+		                    </button>
+		                    <h4 class="modal-title" id="myModalLabel">Add New Teacher</h4>
+		                </div>
+		                <div class="modal-upload">
+		                    <div class="modal-upload-cont">
+		                        <section class="card" style="margin: 10px 20px 10px 20px;">
+																<div class="card-block" style="margin:2px;">
+
+																	<form id="addTeacherForm" name="addTeacherForm" method="POST">
+
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="form-group">
+																							<label class="form-label" for="fullName">Full Name</label>
+																							<div class="form-control-wrapper">
+																								<input id="fullName"
+																									   class="form-control"
+																									   name="Name"
+																									   placeholder="Pankaj koirala"
+																									   type="text"
+																										 data-validation="[NOTEMPTY]"
+																									   data-validation-message="$ cannot be empty.">
+																							</div>
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="form-group">
+																							<label class="form-label" for="designation">Designation</label>
+																							<div class="form-control-wrapper">
+																								<input id="designation"
+																									   class="form-control"
+																									   placeholder="Lecturer, Tutor"
+																									   name="Designation"
+																									   type="text"
+																										 data-validation="[NOTEMPTY]"
+																									   data-validation-message="$ cannot be empty.">
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="row">
+																					<div class="col-md-12">
+																						<div class="form-group">
+																							<label class="form-label" for="experiance">Experiance</label>
+																							<div class="form-control-wrapper">
+																								<input id="experiance"
+																									   class="form-control"
+																									   name="Experiance"
+																									   placeholder="PHP, JAVA"
+																									   type="text"
+																										 data-validation="[NOTEMPTY]"
+																									   data-validation-message="$ cannot be empty.">
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="form-group">
+																							<label class="form-label" for="phone1">Phone 1</label>
+																							<div class="form-control-wrapper">
+																								<input id="phone1"
+																									   class="form-control"
+																									   name="Phone no"
+																									   placeholder="9861050106"
+																									   type="text"
+																										 data-validation="[NOTEMPTY]"
+																									   data-validation-message="$ cannot be empty.">
+																							</div>
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="form-group">
+																							<label class="form-label" for="phone2">Phone 2</label>
+																							<div class="form-control-wrapper">
+																								<input id="phone2"
+																									   class="form-control"
+																										 type="text"
+																									   placeholder="9841525833"
+																									   name="Phone no 2">
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="row">
+																				<div class="col-md-6">
+																					<div class="form-group">
+																						<label class="form-label" for="email1">Email 1</label>
+																						<div class="form-control-wrapper">
+																							<input id="email1"
+																								   class="form-control"
+																								   name="Email"
+																								   placeholder="koiralapankaj007@gmail.com"
+																								   type="email"
+																									 data-validation="[EMAIL]">
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<div class="form-group">
+																						<label class="form-label" for="email2">Email 2</label>
+																						<div class="form-control-wrapper">
+																							<input id="email2"
+																								   class="form-control"
+																								   placeholder="koiralapankaj007@gmail.com"
+																								   name="signup_v1[password]"
+																								   type="email">
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="form-group">
+									                        <button class="btn btn-rounded btn-inline btn-secondary-outline"
+									                         	style="height: 50px; width: 50px; border: 2px solid; margin-top: 4px;"
+									                         	type="button" data-toggle="modal" data-target="#cropperModal"> <i class="fa fa-upload"></i>
+										                     	</button>
+								                         	<div class="img-preview preview-sm hidden croppedImage" style="margin-top: 10px;"></div>
+				                            	</div>
+
+													 						<div class="modal-upload-bottom form-group">
+									                        <button type="button" class="btn btn-rounded btn-default" id="cancleBtn">Cancel</button>
+									                        <button type="submit" class="btn btn-rounded">Done</button>
+									                    </div>
+
+																	</form>
+
+																</div>
+														</section>
+		                    </div><!--.modal-upload-cont-->
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+			<!-- Create news and events modal -->
+
+			<!-- Teachers details -->
+			<div class="rows" id="teacherDiv">
+
+				<!-- Dynamic display -->
+
+			</div>
+
+
+		</div>
+		<!--.container-fluid-->
+	</div>
+	<!--.page-content end-->
+
+	<!-- Cropper modal -->
+	<div class="modal fade bd-example-modal-lg" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border: 0px; background-color: rgba(100,100,100 ,0.9);">
+                <div class="modal-header" style="border-bottom: 0px; margin-bottom: 5px;">
+                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close" style="margin-top: -10px;margin-right: -5px;">
+                        <i class="font-icon-close-2"></i>
+                    </button>
+                </div>
+
+                  <!-- Content -->
+				  <div class="container">
+				    <div class="row">
+				      <div class="col-md-9">
+				        <div class="img-container">
+				          <img id="image" src="../cropper/images/picture.jpg" alt="Picture">
+				        </div>
+				      </div>
+				      <div class="col-md-3">
+				        <div class="docs-preview clearfix">
+				          <div class="img-preview preview-lg"></div>
+				          <div class="img-preview preview-md"></div>
+				          <div class="img-preview preview-sm"></div>
+				          <div class="img-preview preview-xs"></div>
+				        </div>
+				      </div>
+				    </div>
+				    <div class="row">
+				      	<div class="col-md-9 docs-buttons">
+					        <div class="btn-group">
+					          	<label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+					            	<input type="file" class="sr-only" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+					            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="Import image with Blob URLs">
+					              		<span class="fa fa-upload"></span>
+					            	</span>
+					          	</label>
+					        </div>
+
+					        <div class="btn-group btn-group-crop">
+					          	<button type="button" class="btn btn-success cropperBtn" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+					            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { maxWidth: 4096, maxHeight: 4096 })">
+					              Crop Image
+					            	</span>
+					          	</button>
+					          	<button type="button" class="btn btn-success cropperBtn" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 160, &quot;height&quot;: 90 }" style="margin: 0px 5px 0px 5px;">
+					            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 160, height: 90 })">
+					              	160&times;90
+					           	 	</span>
+					          	</button>
+					          	<button type="button" class="btn btn-success cropperBtn" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 320, &quot;height&quot;: 180 }">
+					            	<span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="$().cropper(&quot;getCroppedCanvas&quot;, { width: 320, height: 180 })">
+					              	320&times;180
+					            	</span>
+					          	</button>
+					        </div>
+
+				        <!-- Show the cropped image in modal -->
+				        <div class="modal fade docs-cropped" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+				          	<div class="modal-dialog">
+				            	<div class="modal-content">
+				              		<div class="modal-header">
+				                		<h5 class="modal-title" id="getCroppedCanvasTitle">Cropped</h5>
+				                		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				                  			<span aria-hidden="true">&times;</span>
+				                		</button>
+				              		</div>
+				              		<div class="modal-body"></div>
+				              		<div class="modal-footer">
+				                		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				               	 		<a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.jpg">Download</a>
+				              		</div>
+				            	</div>
+				          	</div>
+				        </div><!-- /.modal -->
+
+				      </div><!-- /.docs-buttons -->
+
+				    </div>
+				  </div>
+
+            </div>
+        </div>
+    </div>
+	<!-- Cropper modal -->
+
+	<script src="../js/lib/jquery/jquery.min.js"></script>
+	<script src="../js/lib/tether/tether.min.js"></script>
+	<script src="../js/lib/bootstrap/bootstrap.min.js"></script>
+	<script src="../js/plugins.js"></script>
+
+	<script src="../js/lib/salvattore/salvattore.min.js"></script>
+	<script src="../cropper/js/cropper.js"></script>
+	<script src="../cropper/js/main.js"></script>
+
+	<script src="../js/lib/html5-form-validation/jquery.validation.min.js"></script>
+	<script src="../js/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+	<script src="../database/institution_toolbar.js"></script>
+	<script type="text/javascript" src="../database/app_teachers.js"></script>
+
+
+
+</body>
+</html>
